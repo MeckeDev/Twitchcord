@@ -13,8 +13,9 @@ class CommandEvents(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        print(message.author.name)
         if message.author.name == self.bot.user.name:
-            return
+            pass
 
         else:
             await self.bot.process_commands(message)

@@ -1,6 +1,5 @@
 # bot.py
 import os
-import random
 import discord
 import asyncio
 from discord.ext import commands
