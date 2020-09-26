@@ -11,6 +11,9 @@ class CommandEvents(commands.Cog):
     async def on_ready(self):
         print(f'{self.bot.user.name} has connected to Discord!')
 
+        game = discord.Game("working hard..")
+        await self.bot.change_presence(status=discord.Status.online, activity=game)
+
     @commands.Cog.listener()
     async def on_message(self, message):
         print(message.author.name)
