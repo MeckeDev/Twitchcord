@@ -7,7 +7,7 @@ class AdminCommands(commands.Cog):
         self.bot = bot
         print("AdminCommands loaded.")
 
-    @commands.command(name='create-channel')
+    @commands.command(name='create', help="Create a new Channel")
     @commands.has_role('Admin')
     async def create_channel(self, ctx, channel_name):
         guild = ctx.guild

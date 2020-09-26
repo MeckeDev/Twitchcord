@@ -1,4 +1,6 @@
 import os
+import discord
+from discord.ext import commands
 import mysql.connector
 from dotenv import load_dotenv
 
@@ -15,10 +17,18 @@ db = mysql.connector.connect(
     db = NAME
 )
 
-cur = db.cursor()
-cur.execute("SELECT * FROM Artikel")
+class DatabaseCommands(commands.Cog):
 
-for row in cur.fetchall():
-    print(row[1])
+    def __init__(self, bot):
+        self.bot = bot
+
+# cur = db.cursor()
+# cur.execute("SELECT * FROM users")
+
+# for row in cur.fetchall():
+#     print(row[1])
 
 db.close()
+
+def setup(bot):
+    bot.add_cog(DatabaseCommands(bot))

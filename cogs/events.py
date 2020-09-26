@@ -21,7 +21,8 @@ class CommandEvents(commands.Cog):
             pass
 
         else:
-            await self.bot.process_commands(message)
+            pass
+            # await self.bot.process_commands(message)
 
 
 def setup(bot):
