@@ -3,11 +3,27 @@ import asyncio
 import discord
 from discord.ext import commands
 
-class SystemComamnds(commands.Cog):
+class SystemCommands(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
         print("SystemCommands loaded.")
+
+    @commands.command(name='status', help="changes the Status of the Bot")
+    @commands.has_role('Admin')
+    async def status(self, ctx, status="online"):
+        
+        if status == "online":
+            await self.bot.change_presence(status=discord.Status.online)
+
+        if status == "offline":
+            await self.bot.change_presence(status=discord.Status.offline)
+
+        if status == "dnd":
+            await self.bot.change_presence(status=discord.Status.do_not_disturb)
+
+        if status == "idle":
+            await self.bot.change_presence(status=discord.Status.idle)
 
     @commands.command(name='reload', help="reload all/specific Cogs")
     @commands.has_role('Admin')
@@ -147,4 +163,4 @@ class SystemComamnds(commands.Cog):
             await ctx.send(embed=embed)
 
 def setup(bot):
-    bot.add_cog(SystemComamnds(bot))
+    bot.add_cog(SystemCommands(bot))
